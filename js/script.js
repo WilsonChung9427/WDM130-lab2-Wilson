@@ -13,40 +13,34 @@ function addPurchase() {
 
     do {
         type = document.getElementById("type").value.trim().toUpperCase();
-
+    
         if (type !== "REG" && type !== "STU" && type !== "VIP") {
             errorMsg = "Invalid ticket type. Use REG, STU, or VIP.";
             break;
         }
-
+    
         let qtyInput = document.getElementById("qty").value;
         qty = Number(qtyInput);
-
-        if (
-            isNaN(qty) ||
-            qty < 1 ||
-            !Number.isInteger(qty)
-        ) {
+    
+        if (isNaN(qty) || qty < 1 || !Number.isInteger(qty)) {
             errorMsg = "Quantity must be a whole number >= 1.";
             break;
         }
-
+    
         promo = document.getElementById("promo").value.trim().toUpperCase();
-
+    
         if (promo !== "" && promo !== "SAVE5") {
             errorMsg = "Invalid promo code. Valid code is SAVE5.";
             break;
         }
-
+    
         errorMsg = "";
     } while (false);
-
+    
     if (errorMsg !== "") {
-        document.getElementById("error").innerText = errorMsg;
+        alert(errorMsg);
         return;
     }
-
-    document.getElementById("error").innerText = "";
 
     let price = 0;
 
